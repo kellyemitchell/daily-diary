@@ -1,0 +1,116 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all enrollments
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new enrollment
+    </h2>
+
+    <form action="/insert_enrollment" method="post">
+      <div class="form-group">
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="provider_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="parent_id_box">
+          Parent
+        </label>
+
+        <input type="text" id="parent_id_box" name="parent_id_from_query" class="form-control">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="accepted_box" name="accepted_from_query" value="1">
+
+        <label class="custom-control-label" for="accepted_box">Accepted</label>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create enrollment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Provider
+        </th>
+
+        <th>
+          Parent
+        </th>
+
+        <th>
+          Accepted
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td>
+          <%= enrollment.id %>
+        </td>
+
+        <td>
+          <%= enrollment.provider_id %>
+        </td>
+
+        <td>
+          <%= enrollment.parent_id %>
+        </td>
+
+        <td>
+          <%= enrollment.accepted %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(enrollment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(enrollment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/enrollments/<%= enrollment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

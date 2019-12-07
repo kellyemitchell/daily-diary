@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all direct messages
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new direct message
+    </h2>
+
+    <form action="/insert_direct_message" method="post">
+      <div class="form-group">
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="sender_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="receiver_id_box">
+          Receiver
+        </label>
+
+        <input type="text" id="receiver_id_box" name="receiver_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="body_from_query" class="form-control" rows="3"></textarea>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create direct message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Sender
+        </th>
+
+        <th>
+          Receiver
+        </th>
+
+        <th>
+          Body
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @direct_messages.each do |direct_message| %>
+      <tr>
+        <td>
+          <%= direct_message.id %>
+        </td>
+
+        <td>
+          <%= direct_message.sender_id %>
+        </td>
+
+        <td>
+          <%= direct_message.receiver_id %>
+        </td>
+
+        <td>
+          <%= direct_message.body %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(direct_message.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(direct_message.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/direct_messages/<%= direct_message.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

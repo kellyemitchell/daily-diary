@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Calendar #<%= @calendar.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/calendars" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_calendar/<%= @calendar.id %>" class="btn btn-block btn-outline-secondary">
+          Delete calendar
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @calendar.provider_id %>
+      </dd>
+
+      <dt>
+        Date
+      </dt>
+      <dd>
+        <%= @calendar.date %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @calendar.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@calendar.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@calendar.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit calendar
+    </h2>
+
+    <form action="/modify_calendar/<%= @calendar.id %>"  method="post" >
+      <div class="form-group">
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="provider_id_from_query" class="form-control" value="<%= @calendar.provider_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="date_box">
+          Date
+        </label>
+
+        <input type="date" id="date_box" name="date_from_query" class="form-control" value="<%= @calendar.date %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="description_from_query" class="form-control" value="<%= @calendar.description %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update calendar
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

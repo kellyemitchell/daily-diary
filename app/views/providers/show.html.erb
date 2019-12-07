@@ -1,0 +1,116 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Provider #<%= @provider.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/providers" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_provider/<%= @provider.id %>" class="btn btn-block btn-outline-secondary">
+          Delete provider
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @provider.name %>
+      </dd>
+
+      <dt>
+        Admin
+      </dt>
+      <dd>
+        <%= @provider.admin_id %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @provider.location %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @provider.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@provider.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@provider.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit provider
+    </h2>
+
+    <form action="/modify_provider/<%= @provider.id %>"  method="post" >
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="name_from_query" class="form-control" value="<%= @provider.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="admin_id_box">
+          Admin
+        </label>
+
+        <input type="text" id="admin_id_box" name="admin_id_from_query" class="form-control" value="<%= @provider.admin_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="location_from_query" class="form-control" value="<%= @provider.location %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="description_from_query" class="form-control" rows="3"><%= @provider.description %></textarea>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update provider
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

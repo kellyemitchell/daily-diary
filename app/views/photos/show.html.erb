@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Photo #<%= @photo.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/photos" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_photo/<%= @photo.id %>" class="btn btn-block btn-outline-secondary">
+          Delete photo
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Update
+      </dt>
+      <dd>
+        <%= @photo.update_id %>
+      </dd>
+
+      <dt>
+        Image url
+      </dt>
+      <dd>
+        <%= @photo.image_url %>
+      </dd>
+
+      <dt>
+        Caption
+      </dt>
+      <dd>
+        <%= @photo.caption %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@photo.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@photo.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit photo
+    </h2>
+
+    <form action="/modify_photo/<%= @photo.id %>"  method="post" >
+      <div class="form-group">
+        <label for="update_id_box">
+          Update
+        </label>
+
+        <input type="text" id="update_id_box" name="update_id_from_query" class="form-control" value="<%= @photo.update_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="image_url_box">
+          Image url
+        </label>
+
+        <input type="text" id="image_url_box" name="image_url_from_query" class="form-control" value="<%= @photo.image_url %>">
+      </div>
+
+      <div class="form-group">
+        <label for="caption_box">
+          Caption
+        </label>
+
+        <input type="text" id="caption_box" name="caption_from_query" class="form-control" value="<%= @photo.caption %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update photo
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

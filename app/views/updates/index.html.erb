@@ -1,0 +1,150 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all updates
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new update
+    </h2>
+
+    <form action="/insert_update" method="post">
+      <div class="form-group">
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="provider_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="reminders_box">
+          Reminders
+        </label>
+
+        <input type="text" id="reminders_box" name="reminders_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="meals_and_snacks_box">
+          Meals and snacks
+        </label>
+
+        <textarea id="meals_and_snacks_box" name="meals_and_snacks_from_query" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="activities_box">
+          Activities
+        </label>
+
+        <input type="text" id="activities_box" name="activities_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="date_box">
+          Date
+        </label>
+
+        <input type="date" id="date_box" name="date_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create update
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Provider
+        </th>
+
+        <th>
+          Reminders
+        </th>
+
+        <th>
+          Meals and snacks
+        </th>
+
+        <th>
+          Activities
+        </th>
+
+        <th>
+          Date
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @updates.each do |update| %>
+      <tr>
+        <td>
+          <%= update.id %>
+        </td>
+
+        <td>
+          <%= update.provider_id %>
+        </td>
+
+        <td>
+          <%= update.reminders %>
+        </td>
+
+        <td>
+          <%= update.meals_and_snacks %>
+        </td>
+
+        <td>
+          <%= update.activities %>
+        </td>
+
+        <td>
+          <%= update.date %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(update.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(update.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/updates/<%= update.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

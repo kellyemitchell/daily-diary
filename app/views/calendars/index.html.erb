@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all calendars
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new calendar
+    </h2>
+
+    <form action="/insert_calendar" method="post">
+      <div class="form-group">
+        <label for="provider_id_box">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id_box" name="provider_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="date_box">
+          Date
+        </label>
+
+        <input type="date" id="date_box" name="date_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="description_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create calendar
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Provider
+        </th>
+
+        <th>
+          Date
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @calendars.each do |calendar| %>
+      <tr>
+        <td>
+          <%= calendar.id %>
+        </td>
+
+        <td>
+          <%= calendar.provider_id %>
+        </td>
+
+        <td>
+          <%= calendar.date %>
+        </td>
+
+        <td>
+          <%= calendar.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(calendar.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(calendar.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/calendars/<%= calendar.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

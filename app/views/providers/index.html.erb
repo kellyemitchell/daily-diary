@@ -1,0 +1,134 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all providers
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new provider
+    </h2>
+
+    <form action="/insert_provider" method="post">
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="name_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="admin_id_box">
+          Admin
+        </label>
+
+        <input type="text" id="admin_id_box" name="admin_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="location_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="description_from_query" class="form-control" rows="3"></textarea>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create provider
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Admin
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @providers.each do |provider| %>
+      <tr>
+        <td>
+          <%= provider.id %>
+        </td>
+
+        <td>
+          <%= provider.name %>
+        </td>
+
+        <td>
+          <%= provider.admin_id %>
+        </td>
+
+        <td>
+          <%= provider.location %>
+        </td>
+
+        <td>
+          <%= provider.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(provider.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(provider.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/providers/<%= provider.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
