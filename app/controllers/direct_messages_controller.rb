@@ -14,7 +14,7 @@ class DirectMessagesController < ApplicationController
 
   def create
     @direct_message = DirectMessage.new
-    @direct_message.sender_id = params.fetch("sender_id_from_query")
+    @direct_message.sender_id = @current_user.id
     @direct_message.receiver_id = params.fetch("receiver_id_from_query")
     @direct_message.body = params.fetch("body_from_query")
 

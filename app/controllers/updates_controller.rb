@@ -19,6 +19,7 @@ class UpdatesController < ApplicationController
     @update.meals_and_snacks = params.fetch("meals_and_snacks_from_query")
     @update.activities = params.fetch("activities_from_query")
     @update.date = params.fetch("date_from_query")
+    
 
     if @update.valid?
       @update.save

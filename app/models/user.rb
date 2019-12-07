@@ -21,4 +21,6 @@ class User < ApplicationRecord
   has_many :providers, :foreign_key => "admin_id", :dependent => :destroy
   has_many :direct_messages, :foreign_key => "receiver_id", :dependent => :destroy
 
+  has_many :updates, :through => :providers, :source => :updates
+
 end

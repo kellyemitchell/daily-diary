@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      List of all updates
+      Your daily updates
     </h1>
   </div>
 </div>
@@ -67,8 +67,8 @@
   <div class="col-md-12">
     <table class="table">
       <tr>
-        <th>
-          ID
+         <th>
+          Date
         </th>
 
         <th>
@@ -76,64 +76,20 @@
         </th>
 
         <th>
-          Reminders
-        </th>
-
-        <th>
-          Meals and snacks
-        </th>
-
-        <th>
-          Activities
-        </th>
-
-        <th>
-          Date
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
+        Show details
         </th>
       </tr>
 
       <% @updates.each do |update| %>
       <tr>
-        <td>
-          <%= update.id %>
-        </td>
-
-        <td>
-          <%= update.provider_id %>
-        </td>
-
-        <td>
-          <%= update.reminders %>
-        </td>
-
-        <td>
-          <%= update.meals_and_snacks %>
-        </td>
-
-        <td>
-          <%= update.activities %>
-        </td>
-
-        <td>
+        
+         <td>
           <%= update.date %>
         </td>
+    
 
         <td>
-          <%= time_ago_in_words(update.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(update.updated_at) %> ago
+          <%= @current_user.name %>
         </td>
 
         <td>

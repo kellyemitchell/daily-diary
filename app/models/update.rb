@@ -16,5 +16,7 @@ class Update < ApplicationRecord
 
   belongs_to :provider
   has_many :photos, :dependent => :destroy
+
+  has_one :author, :through => :provider, :source => :admin
   
 end
