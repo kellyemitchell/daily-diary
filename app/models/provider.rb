@@ -3,6 +3,7 @@
 # Table name: providers
 #
 #  id          :integer          not null, primary key
+#  admin_name  :string
 #  description :text
 #  location    :string
 #  name        :string

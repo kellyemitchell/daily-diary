@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user.email = params.fetch("email_from_query")
     @user.password = params.fetch("password_from_query")
     @user.password_confirmation = params.fetch("password_confirmation_from_query")
-    @user.name = params.fetch("name_from_query")
+    @user.name = params.fetch("name_from_query", nil)
     @user.child_name = params.fetch("child_name_from_query")
     @user.provider = params.fetch("provider_from_query", false)
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if save_status == true
       session.store(:user_id,  @user.id)
    
-      redirect_to("/", { :notice => "User account created successfully."})
+      redirect_to("/providers", { :notice => "User account created successfully."})
     else
       redirect_to("/user_sign_up", { :alert => "User account failed to create successfully."})
     end

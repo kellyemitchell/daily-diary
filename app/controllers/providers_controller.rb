@@ -15,7 +15,8 @@ class ProvidersController < ApplicationController
   def create
     @provider = Provider.new
     @provider.name = params.fetch("name_from_query")
-    @provider.admin_id = params.fetch("admin_id_from_query")
+    @provider.admin_id = @current_user.id
+    @provider.admin_name = @current_user.name
     @provider.location = params.fetch("location_from_query")
     @provider.description = params.fetch("description_from_query")
 

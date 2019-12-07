@@ -1,8 +1,13 @@
+<% if @current_user.provider == true %>
+
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      List of all providers
+      Create a New Childcare Provider Account
     </h1>
+    <h3>
+    Sole providers may skip location field if needed
+    </h3>
   </div>
 </div>
 
@@ -10,9 +15,6 @@
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
-    <h2>
-      Add a new provider
-    </h2>
 
     <form action="/insert_provider" method="post">
       <div class="form-group">
@@ -21,14 +23,6 @@
         </label>
 
         <input type="text" id="name_box" name="name_from_query" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="admin_id_box">
-          Admin
-        </label>
-
-        <input type="text" id="admin_id_box" name="admin_id_from_query" class="form-control">
       </div>
 
       <div class="form-group">
@@ -48,27 +42,39 @@
       </div>
 
       <button class="btn btn-block btn-outline-secondary">
-        Create provider
+        Create provider account
       </button>
     </form>
   </div>
 </div>
+
+ 
+
+<% else %> 
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      Subscribe to a Provider Account
+    </h1>
+  </div>
+</div>
+
+<hr>
 
 <hr>
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
       <tr>
-        <th>
-          ID
-        </th>
+        
 
         <th>
           Name
         </th>
 
         <th>
-          Admin
+          Administrator
         </th>
 
         <th>
@@ -80,29 +86,18 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
         </th>
       </tr>
 
       <% @providers.each do |provider| %>
       <tr>
-        <td>
-          <%= provider.id %>
-        </td>
 
         <td>
           <%= provider.name %>
         </td>
 
         <td>
-          <%= provider.admin_id %>
+          <%= provider.admin_name %>
         </td>
 
         <td>
@@ -114,15 +109,8 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(provider.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(provider.updated_at) %> ago
-        </td>
-
-        <td>
           <a href="/providers/<%= provider.id %>">
-            Show details
+            Subscribe
           </a>
         </td>
       </tr>
@@ -131,4 +119,7 @@
   </div>
 </div>
 
+
 <hr>
+
+<% end %>
