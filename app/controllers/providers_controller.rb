@@ -22,9 +22,10 @@ class ProvidersController < ApplicationController
 
     if @provider.valid?
       @provider.save
-      redirect_to("/providers", { :notice => "Provider created successfully." })
+    
+      redirect_to("/providers/#{@provider.id}", { :notice => "Provider account created successfully." })
     else
-      redirect_to("/providers", { :notice => "Provider failed to create successfully." })
+      redirect_to("/providers", { :notice => "Provider account failed to create successfully." })
     end
   end
 
