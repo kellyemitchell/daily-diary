@@ -54,4 +54,5 @@ class ProvidersController < ApplicationController
 
     redirect_to("/providers", { :notice => "Provider deleted successfully."} )
   end
+
 end

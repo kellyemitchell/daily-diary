@@ -13,4 +13,6 @@
 class Enrollment < ApplicationRecord
   belongs_to :parent, :class_name => "User"
   belongs_to :provider
+
+
 end

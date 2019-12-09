@@ -13,8 +13,10 @@ class UpdatesController < ApplicationController
   end
 
   def create
+    provider = Provider.where({ :admin_id => @current_user.id }).pluck(:id).at(0)
+
     @update = Update.new
-    @update.provider_id = params.fetch("provider_id_from_query")
+    @update.provider_id = provider
     @update.reminders = params.fetch("reminders_from_query")
     @update.meals_and_snacks = params.fetch("meals_and_snacks_from_query")
     @update.activities = params.fetch("activities_from_query")

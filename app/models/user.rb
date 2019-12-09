@@ -23,4 +23,10 @@ class User < ApplicationRecord
 
   has_many :updates, :through => :providers, :source => :updates
 
+  def my_provider_admins
+    array_of_provider_ids = Enrollment.where({ :parent_id => self.id }).pluck(:provider_id)
+    array_of_admin_ids = Provider.where({ :provider_id => array_of_provider_ids }).pluck(:admin_id)
+    return User.where({ :id => array_of_users})
+  end
+
 end

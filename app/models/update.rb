@@ -18,5 +18,9 @@ class Update < ApplicationRecord
   has_many :photos, :dependent => :destroy
 
   has_one :author, :through => :provider, :source => :admin
+
+  def author
+    return provider_name = Provider.where({ :id => self.provider_id}).pluck(:name).at(0)
+  end
   
 end
