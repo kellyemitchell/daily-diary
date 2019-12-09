@@ -1,12 +1,14 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      Your daily updates
+      <%= @current_user.name %>, here are your daily updates
     </h1>
   </div>
 </div>
 
 <hr>
+
+<% if @current_user.provider == true %>
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
@@ -15,20 +17,21 @@
     </h2>
 
     <form action="/insert_update" method="post">
-      <div class="form-group">
-        <label for="provider_id_box">
-          Provider
+      
+    <div class="form-group">
+        <label for="date_box">
+          Date
         </label>
 
-        <input type="text" id="provider_id_box" name="provider_id_from_query" class="form-control">
-      </div>
-
-      <div class="form-group">
+        <input type="date" id="date_box" name="date_from_query" class="form-control" >
+      </div>  
+    
+    <div class="form-group">
         <label for="reminders_box">
           Reminders
         </label>
 
-        <input type="text" id="reminders_box" name="reminders_from_query" class="form-control">
+        <input type="text" id="reminders_box" name="reminders_from_query" class="form-control" placeholder="Please label all winter clothes...">
       </div>
 
       <div class="form-group">
@@ -44,25 +47,107 @@
           Activities
         </label>
 
-        <input type="text" id="activities_box" name="activities_from_query" class="form-control">
+        <input type="text" id="activities_box" name="activities_from_query" class="form-control" placeholder="Outside play...">
       </div>
 
-      <div class="form-group">
-        <label for="date_box">
-          Date
-        </label>
-
-        <input type="date" id="date_box" name="date_from_query" class="form-control">
-      </div>
 
       <button class="btn btn-block btn-outline-secondary">
-        Create update
+        Create update and add photos
       </button>
     </form>
   </div>
 </div>
 
 <hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Past Updates
+    </h2>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+         <th>
+          Date
+        </th>
+
+        <th>
+        Show details
+        </th>
+      </tr>
+
+      <% @updates.each do |update| %>
+      <tr>
+        
+         <td>
+          <%= update.date.to_formatted_s(:long) %>
+        </td>
+
+        <td>
+          <a href="/updates/<%= update.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<% else %> 
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Your latest update
+    </h2>
+      
+    <div>
+        <label for="date_box">
+          Date
+        </label>
+
+       
+      </div>  
+    
+    <div class="form-group">
+        <label for="reminders_box">
+          Reminders
+        </label>
+
+        <input type="text" id="reminders_box" name="reminders_from_query" class="form-control" placeholder="Please label all winter clothes...">
+      </div>
+
+      <div class="form-group">
+        <label for="meals_and_snacks_box">
+          Meals and snacks
+        </label>
+
+        <textarea id="meals_and_snacks_box" name="meals_and_snacks_from_query" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="activities_box">
+          Activities
+        </label>
+
+        <input type="text" id="activities_box" name="activities_from_query" class="form-control" placeholder="Outside play...">
+      </div>
+
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create update and add photos
+      </button>
+    </form>
+  </div>
+</div>
+
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
@@ -84,7 +169,7 @@
       <tr>
         
          <td>
-          <%= update.date %>
+          <%= update.date.to_formatted_s(:long) %>
         </td>
     
 
@@ -104,3 +189,5 @@
 </div>
 
 <hr>
+
+<% end %>

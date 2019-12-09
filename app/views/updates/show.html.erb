@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h1>
-      Update #<%= @update.id %> details
+      <%= @update.date.to_formatted_s(:long) %> 
     </h1>
 
     <div class="row mb-3">
@@ -11,6 +11,7 @@
         </a>
       </div>
 
+
       <div class="col">
         <a href="/delete_update/<%= @update.id %>" class="btn btn-block btn-outline-secondary">
           Delete update
@@ -18,13 +19,9 @@
       </div>
     </div>
 
+   
+
     <dl>
-      <dt>
-        Provider
-      </dt>
-      <dd>
-        <%= @update.provider_id %>
-      </dd>
 
       <dt>
         Reminders
@@ -47,31 +44,20 @@
         <%= @update.activities %>
       </dd>
 
-      <dt>
-        Date
-      </dt>
-      <dd>
-        <%= @update.date %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@update.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@update.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>
 
 <hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Photos
+    </h2>
+    </div>
+  </div>
+
 
 
 <div class="row mb-3">
