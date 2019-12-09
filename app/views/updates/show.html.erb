@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h1>
-      <%= @update.date.to_formatted_s(:long) %> 
+      <%= @update.author %> - <%= @update.date.to_formatted_s(:long) %> 
     </h1>
 
     <div class="row mb-3">
@@ -11,13 +11,15 @@
         </a>
       </div>
 
-
+<% if @current_user == @update.administrator %>
       <div class="col">
         <a href="/delete_update/<%= @update.id %>" class="btn btn-block btn-outline-secondary">
           Delete update
         </a>
       </div>
+      <% end %>
     </div>
+   
 
    
 
@@ -48,17 +50,39 @@
   </div>
 </div>
 
-<hr>
+
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
-    <h2>
-      Photos
-    </h2>
-    </div>
-  </div>
+    <table class="table">
+      <tr>
 
+        <th>
+          Photos
+        </th>
 
+        <th>
+          Caption
+        </th>
+        
+      </tr>
+
+       <% @update.update_photos.each do |photo| %>
+      <tr>
+
+        <td>
+          <img src ="<%= photo.image_url %>">
+        </td>
+
+        <td>
+          <%= photo.caption %>
+        </td>
+        
+      <% end %>
+    
+    </table>
+
+    <% if @current_user == @update.administrator %>
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
@@ -113,5 +137,7 @@
     </form>
   </div>
 </div>
+
+<% end %>
 
 <hr>

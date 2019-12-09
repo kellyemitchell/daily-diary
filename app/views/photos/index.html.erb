@@ -51,9 +51,6 @@
   <div class="col-md-12">
     <table class="table">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Update
@@ -68,26 +65,11 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
         </th>
       </tr>
 
       <% @photos.each do |photo| %>
       <tr>
-        <td>
-          <%= photo.id %>
-        </td>
-
-        <td>
-          <%= photo.update_id %>
-        </td>
 
         <td>
           <%= photo.image_url %>
@@ -96,15 +78,7 @@
         <td>
           <%= photo.caption %>
         </td>
-
-        <td>
-          <%= time_ago_in_words(photo.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(photo.updated_at) %> ago
-        </td>
-
-        <td>
+        
           <a href="/photos/<%= photo.id %>">
             Show details
           </a>
