@@ -97,6 +97,8 @@ Rails.application.routes.draw do
   # DELETE
   match("/delete_enrollment/:id_from_path", { :controller => "enrollments", :action => "destroy", :via => "get"})
 
+  match("/unsubscribe/:id_from_path", { :controller => "enrollments", :action => "unsubscribe", :via => "get"})
+
   #------------------------------
 
   # Routes for the Provider resource:

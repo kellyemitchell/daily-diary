@@ -285,6 +285,9 @@
         <th>
         Administrator
         </th>
+
+        <th>
+        </th>
       </tr>
 
       <% @current_user.my_providers.each do |provider| %>
@@ -296,6 +299,13 @@
 
         <td>
           <%= provider.admin_name %>
+        </td>
+
+        <td>
+      <form action="/unsubscribe/<%= provider.id =%>" method="get">
+      <button class="btn btn-block btn-outline-secondary">
+        Unsubscribe
+      </button>
         </td>
       </tr>
       <% end %>

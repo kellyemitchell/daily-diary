@@ -51,4 +51,14 @@ class EnrollmentsController < ApplicationController
 
     redirect_to("/", { :notice => "Enrollment deleted successfully."} )
   end
+
+    def unsubscribe
+    parent_id = @current_user
+    the_id = params.fetch("id_from_path")
+    @enrollment = Enrollment.where({ :parent_id => parent_id }).where({ :provider_id => the_id }).at(0)
+
+    @enrollment.destroy
+
+    redirect_to("/", { :notice => "You have unsubscribed."} )
+  end
 end
