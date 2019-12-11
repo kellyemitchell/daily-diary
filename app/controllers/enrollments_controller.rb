@@ -43,11 +43,12 @@ class EnrollmentsController < ApplicationController
   end
 
   def destroy
+    provider_id = @current_user.my_business
     the_id = params.fetch("id_from_path")
-    @enrollment = Enrollment.where({ :id => the_id }).at(0)
+    @enrollment = Enrollment.where({ :parent_id => the_id }).where({ :provider_id => provider_id }).at(0)
 
     @enrollment.destroy
 
-    redirect_to("/enrollments", { :notice => "Enrollment deleted successfully."} )
+    redirect_to("/", { :notice => "Enrollment deleted successfully."} )
   end
 end

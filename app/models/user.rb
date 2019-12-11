@@ -60,4 +60,14 @@ class User < ApplicationRecord
     providers = self.my_providers
     return Calendar.where({ :provider_id => providers})
   end
+
+  def my_calendar
+    my_business = Provider.where({ :admin_id => self.id }).pluck(:id)
+    return Calendar.where({ :provider_id => my_business})
+  end
+
+  def my_business
+    return Provider.where({ :admin_id => self.id }).pluck(:id).at(0)
+  end
+
 end
