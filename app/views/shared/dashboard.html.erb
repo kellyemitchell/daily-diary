@@ -1,0 +1,249 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      <%= @current_user.name %>, welcome to your dashboard
+    </h1>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Your providers
+    </h2>
+    <dl>
+
+    <% if @current_user.my_providers != nil %> 
+
+    <div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+         <th>
+          Name
+        </th>
+
+        <th>
+        Administrator
+        </th>
+      </tr>
+
+      <% @current_user.my_providers.each do |provider| %>
+      <tr>
+        
+         <td>
+          <%= provider.name %>
+        </td>
+
+        <td>
+          <%= provider.admin_name %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<% else %> 
+
+      <dt>
+        You are not subscribed to any providers. <a href="/providers">Subscribe here</a>
+      </dt>
+      
+      <% end %>
+
+      <hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Latest update
+    </h2>
+    <dl>
+
+    <% if @current_user.my_latest_update != nil %> 
+
+      <dt>
+        Date
+      </dt>
+      <dd>
+        <%= @current_user.my_latest_update.date.to_formatted_s(:long) %>
+      </dd>
+
+      <dt>
+        Provider
+      </dt>
+      <dd>
+        <%= @current_user.my_latest_update.author %>
+      </dd>
+
+      <dt>
+        Reminders
+      </dt>
+      <dd>
+        <%= @current_user.my_latest_update.reminders %>
+      </dd>
+
+      <dt>
+        Meals and snacks
+      </dt>
+      <dd>
+        <%= @current_user.my_latest_update.meals_and_snacks %>
+      </dd>
+
+      <dt>
+        Activities
+      </dt>
+      <dd>
+        <%= @current_user.my_latest_update.activities %>
+      </dd>
+
+      <dt>
+        <a href="/updates">See all updates</a>
+      </dt>
+
+    </dl>
+  </div>
+</div>
+
+
+
+ <% else %> 
+
+      <dt>
+        Your providers have not posted an update. Please check back soon. 
+      </dt>
+      
+      <% end %> 
+<hr>
+
+
+  <div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Latest direct message
+    </h2>
+    <dl>
+
+    <% if @current_user.direct_messages.at(0) != nil %> 
+
+  <div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+
+        <th>
+          Sender
+        </th>
+
+        <th>
+          Message
+        </th>
+
+        <th>
+          Sent 
+        </th>
+
+        <th>
+        <a href="/direct_messages">View and send messages</a>
+        </th>
+
+      </tr>
+
+      <% @current_user.direct_messages.each do |direct_message| %>
+      <tr>
+
+
+        <td>
+          <%= direct_message.at(0).sender %>
+        </td>
+
+
+        <td>
+          <%= direct_message.at(0).body %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(direct_message.at(0).created_at) %> ago
+        </td>
+
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+   <% else %> 
+
+      <dt>
+        Your providers have not sent any direct messages. Please check back soon. 
+      </dt>
+      <dt>
+      <a href="/direct_messages">Send a message.</a>
+      </dt>
+      
+      <% end %> 
+
+      </dl>
+  </div>
+</div>
+
+  <div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Next calendar item
+    </h2>
+    <dl>
+
+    <% if @current_user.calendar_items.at(0) != nil %> 
+
+  <div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+
+        <th>
+          Date
+        </th>
+
+        <th>
+          Event
+        </th>
+
+        <th>
+        <a href="/calendars">View full calendar</a>
+        </th>
+
+      </tr>
+
+      <% @current_user.calendar_items.each do |direct_message| %>
+      <tr>
+
+
+        <td>
+          <%= calendar_items.at(0).date %>
+        </td>
+
+
+        <td>
+          <%= calendar_items.at(0).description %>
+        </td>
+
+        <td>
+          
+        </td>
+
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+   <% else %> 
+
+      <dt>
+        Your providers have not added any events. Please check back soon. 
+      </dt>
+      
+      <% end %> 

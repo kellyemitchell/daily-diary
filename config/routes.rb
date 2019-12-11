@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  #Dashboard routes
 
+  match("/", { :controller => "application", :action => "index", :via => "get"})
 
   # Routes for the Direct message resource:
 

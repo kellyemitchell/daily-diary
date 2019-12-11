@@ -23,10 +23,9 @@ class User < ApplicationRecord
 
   has_many :updates, :through => :providers, :source => :updates
 
-  def my_provider_admins
+  def my_providers
     array_of_provider_ids = Enrollment.where({ :parent_id => self.id }).pluck(:provider_id)
-    array_of_admin_ids = Provider.where({ :id => array_of_provider_ids }).pluck(:admin_id)
-    return User.where({ :id => array_of_admin_ids})
+    return Provider.where({ :id => array_of_provider_ids })
   end
 
   def my_latest_update 
@@ -51,5 +50,14 @@ class User < ApplicationRecord
     my_business = Provider.where({ :admin_id => self.id }).pluck(:id)
     array_of_parent_ids = Enrollment.where({ :provider_id => my_business }).pluck(:parent_id)
     return User.where({ :id => array_of_parent_ids })
+  end
+
+  def direct_messages
+    return DirectMessage.where({ :receiver_id => self.id })
+  end
+
+  def calendar_items 
+    providers = self.my_providers
+    return Calendar.where({ :provider_id => providers})
   end
 end

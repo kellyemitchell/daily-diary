@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def index 
+    render({ :template => "shared/dashboard.html.erb" })
+  end
+
 end
