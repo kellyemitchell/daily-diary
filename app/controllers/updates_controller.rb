@@ -25,7 +25,7 @@ class UpdatesController < ApplicationController
 
     if @update.valid?
       @update.save
-      redirect_to("/updates", { :notice => "Update created successfully." })
+      redirect_to("/photos", { :notice => "Update created successfully." })
     else
       redirect_to("/updates", { :notice => "Update failed to create successfully." })
     end
@@ -35,7 +35,7 @@ class UpdatesController < ApplicationController
     the_id = params.fetch("id_from_path")
     @update = Update.where({ :id => the_id }).at(0)
 
-    @update.provider_id = params.fetch("provider_id_from_query")
+    @update.provider_id = @current_user.my_business
     @update.reminders = params.fetch("reminders_from_query")
     @update.meals_and_snacks = params.fetch("meals_and_snacks_from_query")
     @update.activities = params.fetch("activities_from_query")

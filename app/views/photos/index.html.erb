@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      List of all photos
+      
     </h1>
   </div>
 </div>
@@ -15,13 +15,6 @@
     </h2>
 
     <form action="/insert_photo" method="post">
-      <div class="form-group">
-        <label for="update_id_box">
-          Update
-        </label>
-
-        <input type="text" id="update_id_box" name="update_id_from_query" class="form-control">
-      </div>
 
       <div class="form-group">
         <label for="image_url_box">
@@ -40,53 +33,19 @@
       </div>
 
       <button class="btn btn-block btn-outline-secondary">
-        Create photo
+        Add photo to last update
       </button>
     </form>
   </div>
 </div>
 
-<hr>
 <div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
+  <div class="col-md-8 offset-md-2">
+    <h4>
+      <a href="/">I'm done adding photos. Take me home</a>
+    </h4>
+    </div>
+    </div>
 
-        <th>
-          Update
-        </th>
 
-        <th>
-          Image url
-        </th>
 
-        <th>
-          Caption
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @photos.each do |photo| %>
-      <tr>
-
-        <td>
-          <%= photo.image_url %>
-        </td>
-
-        <td>
-          <%= photo.caption %>
-        </td>
-        
-          <a href="/photos/<%= photo.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>

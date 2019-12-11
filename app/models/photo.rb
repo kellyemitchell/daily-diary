@@ -11,6 +11,7 @@
 #
 
 class Photo < ApplicationRecord
+  validates :update_id, :presence => true
 
   belongs_to :provider_update, :class_name => "Update", :foreign_key => "update_id"
 end

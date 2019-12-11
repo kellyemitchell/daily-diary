@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new
-    @photo.update_id = params.fetch("update_id_from_query")
+    @photo.update_id = @current_user.last_update
     @photo.image_url = params.fetch("image_url_from_query")
     @photo.caption = params.fetch("caption_from_query")
 
