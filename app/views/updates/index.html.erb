@@ -80,7 +80,9 @@
         </th>
       </tr>
 
-      <% @updates.each do |update| %>
+      <% if @current_user.user_provider_updates != nil %>
+
+      <% @current_user.user_provider_updates.each do |update| %>
       <tr>
         
          <td>
@@ -97,6 +99,7 @@
     </table>
   </div>
 </div>
+<% end %> 
 
 <hr>
 
@@ -108,6 +111,8 @@
       Latest update
     </h2>
     <dl>
+
+    <% if @current_user.my_latest_update != nil %> 
 
       <dt>
         Date
@@ -180,6 +185,14 @@
   </div>
 </div>
 
+ <% else %> 
+
+      <dt>
+        Your providers have not posted an update. Please check back soon. 
+      </dt>
+      
+      <% end %> 
+
 <hr>
 
 <div class="row mb-3">
@@ -189,6 +202,8 @@
     </h2>
   </div>
 </div>
+
+<% if @current_user.user_updates != nil %>
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
@@ -207,7 +222,7 @@
         </th>
       </tr>
 
-      <% @updates.each do |update| %>
+      <% @current_user.user_updates.each do |update| %>
       <tr>
         
          <td>
@@ -229,6 +244,14 @@
     </table>
   </div>
 </div>
+
+<% else %> 
+
+<dt>
+Your providers have not posted an update. Please check back soon. 
+</dt>
+
+<% end %>
 
 <hr>
 

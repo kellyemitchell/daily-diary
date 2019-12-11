@@ -26,7 +26,7 @@ class User < ApplicationRecord
   def my_provider_admins
     array_of_provider_ids = Enrollment.where({ :parent_id => self.id }).pluck(:provider_id)
     array_of_admin_ids = Provider.where({ :id => array_of_provider_ids }).pluck(:admin_id)
-    return User.where({ :id => array_of_users})
+    return User.where({ :id => array_of_admin_ids})
   end
 
   def my_latest_update 
@@ -34,4 +34,17 @@ class User < ApplicationRecord
     array_of_updates = Update.where({ :provider_id => array_of_provider_ids }).order( :date => :asc)
     return array_of_updates.at(0)
   end
+
+  def user_updates
+    array_of_provider_ids = Enrollment.where({ :parent_id => self.id }).pluck(:provider_id)
+    array_of_updates = Update.where({ :provider_id => array_of_provider_ids }).order( :date => :asc)
+    return array_of_updates
+  end
+
+  def user_provider_updates
+    array_of_provider_ids = Provider.where({ :admin_id => self.id }).pluck(:id)
+    array_of_updates = Update.where({ :provider_id => array_of_provider_ids}).order( :date => :asc)
+    return array_of_updates
+  end
+
 end

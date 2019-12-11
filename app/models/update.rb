@@ -13,6 +13,7 @@
 #
 
 class Update < ApplicationRecord
+  validates :date, :presence => true
 
   belongs_to :provider
   has_many :photos, :dependent => :destroy
@@ -31,4 +32,6 @@ class Update < ApplicationRecord
   provider = Provider.where({ :id => self.provider_id}).pluck(:admin_id)
   return User.where({ :id => provider}).at(0)
  end
+ 
+
 end
