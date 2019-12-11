@@ -3,11 +3,9 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      Create a New Childcare Provider Account
+      Complete Your Childcare Provider Account
     </h1>
-    <h3>
-    Sole providers may skip location field if needed
-    </h3>
+    
   </div>
 </div>
 
@@ -62,7 +60,7 @@
 
 <hr>
 
-<hr>
+
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
@@ -109,9 +107,16 @@
         </td>
 
         <td>
-          <a href="/providers/<%= provider.id %>">
-            Subscribe
-          </a>
+          <form action="/insert_enrollment" method="post">
+      
+          <div class="form-group">
+        <input type="hidden" id="provider_id_box" name="provider_id_from_query" class="form-control" value="<%= provider.id %>">
+        </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Subscribe
+      </button>
+    </form>
         </td>
       </tr>
       <% end %>

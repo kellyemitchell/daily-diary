@@ -15,14 +15,14 @@ class EnrollmentsController < ApplicationController
   def create
     @enrollment = Enrollment.new
     @enrollment.provider_id = params.fetch("provider_id_from_query")
-    @enrollment.parent_id = params.fetch("parent_id_from_query")
+    @enrollment.parent_id = @current_user.id
     @enrollment.accepted = params.fetch("accepted_from_query", false)
 
     if @enrollment.valid?
       @enrollment.save
-      redirect_to("/enrollments", { :notice => "Enrollment created successfully." })
+      redirect_to("/", { :notice => "Enrollment created successfully." })
     else
-      redirect_to("/enrollments", { :notice => "Enrollment failed to create successfully." })
+      redirect_to("/providers", { :notice => "Enrollment failed to create successfully." })
     end
   end
 

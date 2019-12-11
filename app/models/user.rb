@@ -47,4 +47,9 @@ class User < ApplicationRecord
     return array_of_updates
   end
 
+  def user_provider_subscribers
+    my_business = Provider.where({ :admin_id => self.id }).pluck(:id)
+    array_of_parent_ids = Enrollment.where({ :provider_id => my_business }).pluck(:parent_id)
+    return User.where({ :id => array_of_parent_ids })
+  end
 end
