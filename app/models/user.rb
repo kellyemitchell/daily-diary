@@ -70,6 +70,10 @@ class User < ApplicationRecord
     return Provider.where({ :admin_id => self.id }).pluck(:id).at(0)
   end
 
+  def my_business_name
+    return Provider.where({ :admin_id => self.id }).at(0).name
+  end
+
   def last_update 
     provider = self.my_business
     updates = Update.where({ :provider_id => provider }).order({ :created_at => :desc })

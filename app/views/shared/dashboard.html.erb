@@ -79,6 +79,8 @@
   </div>
 </div>
 
+<hr>
+
 <div class="row mb-3">
   <div class="col-md-12">
     <h2>
@@ -133,6 +135,8 @@
       </dt>
       
       <% end %> 
+
+<hr>
 
       <div class="row mb-3">
   <div class="col-md-12">
@@ -198,7 +202,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h2>
-      Your subscribers
+      <%= @current_user.my_business_name %> subscribers
     </h2>
     <dl>
 
@@ -370,7 +374,7 @@
       </dd>
 
       <dt>
-        <a href="/updates">See all updates</a>
+        <a href="/updates">See photos and additional updates</a>
       </dt>
 
     </dl>
