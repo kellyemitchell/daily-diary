@@ -11,7 +11,7 @@
  <div class="row mb-3">
   <div class="col-md-12">
     <h2>
-      Latest direct message
+      Direct message inbox preview
     </h2>
     <dl>
 
@@ -396,8 +396,11 @@
   <div class="row mb-3">
   <div class="col-md-12">
     <h2>
-      Latest direct message
+      Direct message inbox preview
     </h2>
+    <p>
+    <a href="/direct_messages">View and send messages</a>
+    </p>
     <dl>
 
     <% if @current_user.direct_messages.at(0) != nil %> 
@@ -419,10 +422,6 @@
           Sent 
         </th>
 
-        <th>
-        <a href="/direct_messages">View and send messages</a>
-        </th>
-
       </tr>
 
       <% @current_user.direct_messages.each do |direct_message| %>
@@ -430,20 +429,18 @@
 
 
         <td>
-          <%= direct_message.at(0).sender %>
+          <%= direct_message.sender.name %>
         </td>
 
 
         <td>
-          <%= direct_message.at(0).body %>
+          <%= direct_message.body %>
         </td>
 
         <td>
-          <%= time_ago_in_words(direct_message.at(0).created_at) %> ago
+          <%= time_ago_in_words(direct_message.created_at) %> ago
         </td>
 
-          </a>
-        </td>
       </tr>
       <% end %>
     </table>

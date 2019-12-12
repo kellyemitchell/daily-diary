@@ -15,7 +15,7 @@ class DirectMessage < ApplicationRecord
   belongs_to :sender, :class_name => "Provider"
 
   def sender
-    user = DirectMessage({ :id => self.id }).pluck(sender_id).at(0)
+    user = DirectMessage.where({ :id => self.id }).pluck(sender_id).at(0)
     return User.where({ :id => user }).at(0)
   end
 end

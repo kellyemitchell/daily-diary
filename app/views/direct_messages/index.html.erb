@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      List of all direct messages
+      Direct messages
     </h1>
   </div>
 </div>
@@ -10,37 +10,33 @@
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
-    <h2>
-      Add a new direct message
-    </h2>
 
     <form action="/insert_direct_message" method="post">
-      <div class="form-group">
-        <label for="sender_id_box">
-          Sender
-        </label>
-
-        <input type="text" id="sender_id_box" name="sender_id_from_query" class="form-control">
-      </div>
 
       <div class="form-group">
         <label for="receiver_id_box">
-          Receiver
+          To:
         </label>
+        <select name="receiver_id_from_query" id="receiver_id_box" class="form-control">
+          <% @current_user.user_provider_subscribers.each do |family| %>
 
-        <input type="text" id="receiver_id_box" name="receiver_id_from_query" class="form-control">
+          <option value="<%= family.id %>"> <%= family.name %> </option>
+          
+          <% end %>
+  
+        </select>
       </div>
 
       <div class="form-group">
         <label for="body_box">
-          Body
+          Message
         </label>
 
         <textarea id="body_box" name="body_from_query" class="form-control" rows="3"></textarea>
       </div>
 
       <button class="btn btn-block btn-outline-secondary">
-        Create direct message
+        Send direct message
       </button>
     </form>
   </div>
