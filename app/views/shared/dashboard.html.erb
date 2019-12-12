@@ -11,8 +11,11 @@
  <div class="row mb-3">
   <div class="col-md-12">
     <h2>
-      Direct message inbox preview
+      Inbox preview
     </h2>
+     <p>
+      <a href="/direct_messages">View and send messages.</a>
+      </p>
     <dl>
 
     <% if @current_user.direct_messages.at(0) != nil %> 
@@ -23,7 +26,7 @@
       <tr>
 
         <th>
-          Sender
+          From
         </th>
 
         <th>
@@ -34,33 +37,27 @@
           Sent 
         </th>
 
-        <th>
-        <a href="/direct_messages">View and send messages</a>
-        </th>
-
       </tr>
 
-      <% @current_user.direct_messages.each do |direct_message| %>
+      
       <tr>
 
 
         <td>
-          <%= direct_message.at(0).sender %>
+          <%= @current_user.direct_messages.at(0).sender.name %>
         </td>
 
 
         <td>
-          <%= direct_message.at(0).body %>
+          <%= @current_user.direct_messages.at(0).body %>
         </td>
 
         <td>
-          <%= time_ago_in_words(direct_message.at(0).created_at) %> ago
+          <%= time_ago_in_words(@current_user.direct_messages.at(0).created_at) %> ago
         </td>
-
-          </a>
-        </td>
+          
       </tr>
-      <% end %>
+     
     </table>
   </div>
 
@@ -68,9 +65,6 @@
 
       <dt>
         You have no direct messages. Please check back soon. 
-      </dt>
-      <dt>
-      <a href="/direct_messages">Send a message.</a>
       </dt>
       
       <% end %> 
@@ -86,6 +80,9 @@
     <h2>
       Your last update
     </h2>
+    <p>
+        <a href="/updates">Add new updates</a>
+      </p>
     <dl>
 
     <% if @current_user.user_provider_updates.at(0) != nil %> 
@@ -118,10 +115,6 @@
         <%= @current_user.user_provider_updates.at(0).activities %>
       </dd>
 
-      <dt>
-        <a href="/updates">Add new updates</a>
-      </dt>
-
     </dl>
   </div>
 </div>
@@ -131,7 +124,7 @@
  <% else %> 
 
       <dt>
-        You have not posted an update. <a href="/updates">Update your families.</a>
+        You have not posted an update. 
       </dt>
       
       <% end %> 
@@ -335,7 +328,7 @@
       Latest update
     </h2>
     <p>
-        <a href="/updates">See photos and all updates</a>
+        <a href="/updates">See all photos and updates</a>
       </p>
     <dl>
 
@@ -410,7 +403,7 @@
       <tr>
 
         <th>
-          Sender
+          From
         </th>
 
         <th>
