@@ -334,6 +334,9 @@
     <h2>
       Latest update
     </h2>
+    <p>
+        <a href="/updates">See photos and all updates</a>
+      </p>
     <dl>
 
     <% if @current_user.my_latest_update != nil %> 
@@ -373,10 +376,6 @@
         <%= @current_user.my_latest_update.activities %>
       </dd>
 
-      <dt>
-        <a href="/updates">See photos and additional updates</a>
-      </dt>
-
     </dl>
   </div>
 </div>
@@ -396,7 +395,7 @@
   <div class="row mb-3">
   <div class="col-md-12">
     <h2>
-      Direct message inbox preview
+      Inbox preview
     </h2>
     <p>
     <a href="/direct_messages">View and send messages</a>
@@ -424,25 +423,25 @@
 
       </tr>
 
-      <% @current_user.direct_messages.each do |direct_message| %>
+      
       <tr>
 
 
         <td>
-          <%= direct_message.sender.name %>
+          <%= @current_user.direct_messages.at(0).sender.name %>
         </td>
 
 
         <td>
-          <%= direct_message.body %>
+          <%= @current_user.direct_messages.at(0).body %>
         </td>
 
         <td>
-          <%= time_ago_in_words(direct_message.created_at) %> ago
+          <%= time_ago_in_words(@current_user.direct_messages.at(0).created_at) %> ago
         </td>
 
       </tr>
-      <% end %>
+      
     </table>
   </div>
 

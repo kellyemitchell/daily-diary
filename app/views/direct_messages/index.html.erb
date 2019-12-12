@@ -17,6 +17,9 @@
         <label for="receiver_id_box">
           To:
         </label>
+
+        <% if @current_user.provider == true %> 
+
         <select name="receiver_id_from_query" id="receiver_id_box" class="form-control">
           <% @current_user.user_provider_subscribers.each do |family| %>
 
@@ -25,6 +28,20 @@
           <% end %>
   
         </select>
+
+        <% else %> 
+
+        <select name="receiver_id_from_query" id="receiver_id_box" class="form-control">
+          <% @current_user.my_providers.each do |family| %>
+
+          <option value="<%= family.id %>"> <%= family.name %> </option>
+          
+          <% end %>
+  
+        </select>
+
+        <% end %> 
+
       </div>
 
       <div class="form-group">
@@ -43,50 +60,39 @@
 </div>
 
 <hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Inbox
+    </h2>
+    </div>
+    </div>
+
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
       <tr>
+
         <th>
-          ID
+          From:
         </th>
 
         <th>
-          Sender
+          Message
         </th>
 
         <th>
-          Receiver
+          Sent
         </th>
 
-        <th>
-          Body
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
       </tr>
 
-      <% @direct_messages.each do |direct_message| %>
+      <% @current_user.direct_messages.each do |direct_message| %>
       <tr>
-        <td>
-          <%= direct_message.id %>
-        </td>
 
         <td>
-          <%= direct_message.sender_id %>
-        </td>
-
-        <td>
-          <%= direct_message.receiver_id %>
+          <%= direct_message.sender.name %>
         </td>
 
         <td>
@@ -96,15 +102,7 @@
         <td>
           <%= time_ago_in_words(direct_message.created_at) %> ago
         </td>
-        <td>
-          <%= time_ago_in_words(direct_message.updated_at) %> ago
-        </td>
 
-        <td>
-          <a href="/direct_messages/<%= direct_message.id %>">
-            Show details
-          </a>
-        </td>
       </tr>
       <% end %>
     </table>
@@ -112,3 +110,52 @@
 </div>
 
 <hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Sent
+    </h2>
+    </div>
+    </div>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+
+        <th>
+          To:
+        </th>
+
+        <th>
+          Message
+        </th>
+
+        <th>
+          Sent
+        </th>
+
+      </tr>
+
+      <% @current_user.sent_messages.each do |direct_message| %>
+
+      <tr>
+
+        <td>
+          <%= direct_message.receiver.name %>
+        </td>
+
+        <td>
+          <%= direct_message.body %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(direct_message.created_at) %> ago
+        </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

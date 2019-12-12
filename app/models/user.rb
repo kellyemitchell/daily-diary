@@ -56,6 +56,10 @@ class User < ApplicationRecord
     return DirectMessage.where({ :receiver_id => self.id })
   end
 
+  def sent_messages
+    return DirectMessage.where({ :sender_id => self.id })
+  end
+
   def calendar_items 
     providers = self.my_providers
     return Calendar.where({ :provider_id => providers})
