@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def direct_messages
-    return DirectMessage.where({ :receiver_id => self.id })
+    return DirectMessage.where({ :receiver_id => self.id }).order({ :created_at => :desc })
   end
 
   def sent_messages

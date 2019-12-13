@@ -8,6 +8,73 @@
 
 <% if @current_user.provider == true %>
 
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      <%= @current_user.my_business_name %> subscribers
+    </h2>
+    <dl>
+
+    <% if @current_user.user_provider_subscribers.at(0) != nil %> 
+
+    <div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+         <th>
+          Name
+        </th>
+
+        <th>
+        Email
+        </th>
+
+         <th>
+        Child name
+        </th>
+
+          <th>
+        
+        </th>
+
+      </tr>
+
+      <% @current_user.user_provider_subscribers.each do |family| %>
+      <tr>
+        
+         <td>
+          <%= family.name %>
+        </td>
+
+        <td>
+          <%= family.email %>
+        </td>
+
+        <td>
+          <%= family.child_name %>
+        </td>
+
+         <td>
+      <form action="/delete_enrollment/<%= family.id %>" method="get">
+      <button class="btn btn-block btn-outline-secondary">
+        Delete enrollment
+      </button>
+        </td>
+        
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<% else %> 
+
+      <dt>
+        You do not have any subscribers. Please check back soon. 
+      </dt>
+      
+      <% end %>
+
+
  <div class="row mb-3">
   <div class="col-md-12">
     <h2>
@@ -131,139 +198,12 @@
 
 <hr>
 
-      <div class="row mb-3">
-  <div class="col-md-12">
-    <h2>
-      Next calendar item
-    </h2>
-    <dl>
-
-    <% if @current_user.my_calendar.at(0) != nil %> 
-
-  <div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-
-        <th>
-          Date
-        </th>
-
-        <th>
-          Event
-        </th>
-
-        <th>
-        <a href="/calendars">View full calendar</a>
-        </th>
-
-      </tr>
-
-      <% @current_user.my_calendar.each do |direct_message| %>
-      <tr>
-
-
-        <td>
-          <%= my_calendar.at(0).date %>
-        </td>
-
-
-        <td>
-          <%= my_calendar.at(0).description %>
-        </td>
-
-        <td>
-          
-        </td>
-
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-
-   <% else %> 
-
-      <dt>
-        You have not added any events. <a href="/calendars">Update your families.</a>
-      </dt>
-      
-      <% end %> 
-
-      <hr>
-<div class="row mb-3">
-  <div class="col-md-12">
-    <h2>
-      <%= @current_user.my_business_name %> subscribers
-    </h2>
-    <dl>
-
-    <% if @current_user.user_provider_subscribers.at(0) != nil %> 
-
-    <div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-         <th>
-          Name
-        </th>
-
-        <th>
-        Email
-        </th>
-
-         <th>
-        Child name
-        </th>
-
-          <th>
-        
-        </th>
-
-      </tr>
-
-      <% @current_user.user_provider_subscribers.each do |family| %>
-      <tr>
-        
-         <td>
-          <%= family.name %>
-        </td>
-
-        <td>
-          <%= family.email %>
-        </td>
-
-        <td>
-          <%= family.child_name %>
-        </td>
-
-         <td>
-      <form action="/delete_enrollment/<%= family.id =%>" method="get">
-      <button class="btn btn-block btn-outline-secondary">
-        Delete enrollment
-      </button>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-<% else %> 
-
-      <dt>
-        You do not have any subscribers. Please check back soon. 
-      </dt>
-      
-      <% end %>
-
+ 
 <% else %>
 
 
-
-
 <div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
+  <div class="col-md-12">
     <h2>
       Your providers
     </h2>
@@ -453,64 +393,4 @@
   </div>
 </div>
 
-  <div class="row mb-3">
-  <div class="col-md-12">
-    <h2>
-      Next calendar item
-    </h2>
-    <dl>
-
-    <% if @current_user.calendar_items.at(0) != nil %> 
-
-  <div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-
-        <th>
-          Date
-        </th>
-
-        <th>
-          Event
-        </th>
-
-        <th>
-        <a href="/calendars">View full calendar</a>
-        </th>
-
-      </tr>
-
-      <% @current_user.calendar_items.each do |direct_message| %>
-      <tr>
-
-
-        <td>
-          <%= calendar_items.at(0).date %>
-        </td>
-
-
-        <td>
-          <%= calendar_items.at(0).description %>
-        </td>
-
-        <td>
-          
-        </td>
-
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-
-   <% else %> 
-
-      <dt>
-        Your providers have not added any events. Please check back soon. 
-      </dt>
-      
-      <% end %> 
-
-      <% end %> 
+<% end %> 
