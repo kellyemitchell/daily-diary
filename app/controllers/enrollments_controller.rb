@@ -44,8 +44,8 @@ class EnrollmentsController < ApplicationController
 
   def destroy
     provider_id = @current_user.my_business
-    the_id = params.fetch("id_from_path")
-    @enrollment = Enrollment.where({ :parent_id => the_id }).where({ :provider_id => provider_id }).at(0)
+    parent_id = params.fetch("parent_from_path")
+    @enrollment = Enrollment.where({ :parent_id => parent_id }).where({ :provider_id => provider_id }).at(0)
 
     @enrollment.destroy
 
@@ -53,7 +53,7 @@ class EnrollmentsController < ApplicationController
   end
 
     def unsubscribe
-    parent_id = @current_user
+    parent_id = @current_user.id
     the_id = params.fetch("id_from_path")
     @enrollment = Enrollment.where({ :parent_id => parent_id }).where({ :provider_id => the_id }).at(0)
 

@@ -95,7 +95,7 @@ Rails.application.routes.draw do
   match("/modify_enrollment/:id_from_path", { :controller => "enrollments", :action => "update", :via => "post"})
   
   # DELETE
-  match("/delete_enrollment/:id_from_path", { :controller => "enrollments", :action => "destroy", :via => "get"})
+  match("/delete_enrollment/:parent_from_path", { :controller => "enrollments", :action => "destroy", :via => "get"})
 
   match("/unsubscribe/:id_from_path", { :controller => "enrollments", :action => "unsubscribe", :via => "get"})
 
