@@ -57,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def sent_messages
-    return DirectMessage.where({ :sender_id => self.id })
+    return DirectMessage.where({ :sender_id => self.id }).order({ :created_at => :desc })
   end
 
   def calendar_items 

@@ -12,6 +12,7 @@
 
 class Photo < ApplicationRecord
   validates :update_id, :presence => true
+  validates :image_url, :presence => true
 
   belongs_to :provider_update, :class_name => "Update", :foreign_key => "update_id"
 

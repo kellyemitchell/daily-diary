@@ -12,33 +12,33 @@ Rails.application.routes.draw do
   # READ
   match("/direct_messages", { :controller => "direct_messages", :action => "index", :via => "get"})
   
-  match("/direct_messages/:id_from_path", { :controller => "direct_messages", :action => "show", :via => "get"})
+  #match("/direct_messages/:id_from_path", { :controller => "direct_messages", :action => "show", :via => "get"})
   
   # UPDATE
   
-  match("/modify_direct_message/:id_from_path", { :controller => "direct_messages", :action => "update", :via => "post"})
+  #match("/modify_direct_message/:id_from_path", { :controller => "direct_messages", :action => "update", :via => "post"})
   
   # DELETE
-  match("/delete_direct_message/:id_from_path", { :controller => "direct_messages", :action => "destroy", :via => "get"})
+  #match("/delete_direct_message/:id_from_path", { :controller => "direct_messages", :action => "destroy", :via => "get"})
 
   #------------------------------
 
   # Routes for the Calendar resource:
 
   # CREATE
-  match("/insert_calendar", { :controller => "calendars", :action => "create", :via => "post"})
+  #match("/insert_calendar", { :controller => "calendars", :action => "create", :via => "post"})
           
   # READ
-  match("/calendars", { :controller => "calendars", :action => "index", :via => "get"})
+  #match("/calendars", { :controller => "calendars", :action => "index", :via => "get"})
   
-  match("/calendars/:id_from_path", { :controller => "calendars", :action => "show", :via => "get"})
+  #match("/calendars/:id_from_path", { :controller => "calendars", :action => "show", :via => "get"})
   
   # UPDATE
   
-  match("/modify_calendar/:id_from_path", { :controller => "calendars", :action => "update", :via => "post"})
+  #match("/modify_calendar/:id_from_path", { :controller => "calendars", :action => "update", :via => "post"})
   
   # DELETE
-  match("/delete_calendar/:id_from_path", { :controller => "calendars", :action => "destroy", :via => "get"})
+  #match("/delete_calendar/:id_from_path", { :controller => "calendars", :action => "destroy", :via => "get"})
 
   #------------------------------
 
@@ -50,14 +50,14 @@ Rails.application.routes.draw do
   # READ
   match("/photos", { :controller => "photos", :action => "index", :via => "get"})
   
-  match("/photos/:id_from_path", { :controller => "photos", :action => "show", :via => "get"})
+  #match("/photos/:id_from_path", { :controller => "photos", :action => "show", :via => "get"})
   
   # UPDATE
   
-  match("/modify_photo/:id_from_path", { :controller => "photos", :action => "update", :via => "post"})
+  #match("/modify_photo/:id_from_path", { :controller => "photos", :action => "update", :via => "post"})
   
   # DELETE
-  match("/delete_photo/:id_from_path", { :controller => "photos", :action => "destroy", :via => "get"})
+  #match("/delete_photo/:id_from_path", { :controller => "photos", :action => "destroy", :via => "get"})
 
   #------------------------------
 
@@ -88,11 +88,11 @@ Rails.application.routes.draw do
   # READ
   match("/enrollments", { :controller => "enrollments", :action => "index", :via => "get"})
   
-  match("/enrollments/:id_from_path", { :controller => "enrollments", :action => "show", :via => "get"})
+  #match("/enrollments/:id_from_path", { :controller => "enrollments", :action => "show", :via => "get"})
   
   # UPDATE
   
-  match("/modify_enrollment/:id_from_path", { :controller => "enrollments", :action => "update", :via => "post"})
+  #match("/modify_enrollment/:id_from_path", { :controller => "enrollments", :action => "update", :via => "post"})
   
   # DELETE
   match("/delete_enrollment/:parent_from_path", { :controller => "enrollments", :action => "destroy", :via => "get"})
@@ -109,11 +109,11 @@ Rails.application.routes.draw do
   # READ
   match("/providers", { :controller => "providers", :action => "index", :via => "get"})
   
-  match("/providers/:id_from_path", { :controller => "providers", :action => "show", :via => "get"})
+  #match("/providers/:id_from_path", { :controller => "providers", :action => "show", :via => "get"})
   
   # UPDATE
   
-  match("/modify_provider/:id_from_path", { :controller => "providers", :action => "update", :via => "post"})
+  #match("/modify_provider/:id_from_path", { :controller => "providers", :action => "update", :via => "post"})
   
   # DELETE
   match("/delete_provider/:id_from_path", { :controller => "providers", :action => "destroy", :via => "get"})
